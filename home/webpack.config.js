@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack").container
 const path = require("path");
 
 module.exports = {
-	entry: "./index.jsx",
+	entry: "./index.js",
 	mode: "development",
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
@@ -32,6 +32,12 @@ module.exports = {
 			remotes: {
 				comic: `comic@${getRemoteEntryUrl(1338)}`,
 			},
+			shared: [
+				{
+					react: { singleton: true, eager: true },
+					"react-dom": { singleton: true, eager: true },
+				},
+			],
 		}),
 		new HtmlWebpackPlugin({
 			template: "./index.html",

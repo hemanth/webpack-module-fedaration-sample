@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = webpack.container;
 
 module.exports = {
-	entry: "./index.jsx",
+	entry: "./index.js",
 	mode: "development",
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
@@ -31,14 +31,14 @@ module.exports = {
 			name: "comic",
 			filename: "remoteEntry.js",
 			exposes: {
-				"./XKCD": "./index.jsx",
+				"./XKCD": "./app.jsx",
 			},
-			// shared: [
-			// 	{
-			// 		react: { singleton: true, eager: true },
-			// 		"react-dom": { singleton: true, eager: true },
-			// 	},
-			// ],
+			shared: [
+				{
+					react: { singleton: true, eager: true },
+					"react-dom": { singleton: true, eager: true },
+				},
+			],
 		}),
 		new HtmlWebpackPlugin({
 			template: "./index.html",
