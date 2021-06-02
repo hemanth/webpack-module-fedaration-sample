@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import { imgData } from "./loader-data-url";
 
 export default function App() {
@@ -44,5 +43,3 @@ const ImageLoader = React.memo(({ src, alt = "" }) => {
 		/>
 	);
 });
-
-ReactDOM.render(<App />, document.getElementById("root"));
